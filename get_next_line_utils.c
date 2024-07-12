@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 10:07:01 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/12 12:22:08 by arojas-a         ###   ########.fr       */
+/*   Created: 2024/07/12 11:09:28 by arojas-a          #+#    #+#             */
+/*   Updated: 2024/07/12 12:00:58 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <fcntl.h>
-#include <stdio.h>
 #include "get_next_line.h"
 
-int	main(int ac, char **av)
+int	ft_strlen(const char *s)
 {
-	int 	fd;
-	char	*line;
+	int	i;
+	while(s[i] != '\0')
+		i++;
+	return(i);
+}
 
-	if (ac == 1)
-		write(1, "File name missing.\n", 19);
-	else
+char	*ft_strdup(const char *s)
+{
+	char	*dest;
+	int		len;
+	int		i;
+
+	len = ft_strlen(s);
+	dest = (char *)malloc(sizeof(char) * len);
+	if (dest == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
 	{
-		fd = open(av[1], O_RDONLY);
-		if (fd == -1)
-			write(1, "Cannot read file.\n", 18);
-		else
-		{
-			line = get_next_line(fd);
-			while(line)
-			{
-				printf("-----------------\n");
-				printf("%s \n", line);
-				free(line);
-				line = get_next_line(fd);
-			}
-			close(fd);
-		}
+		dest[i] = s[i];
+		i++;
 	}
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }
