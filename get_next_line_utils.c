@@ -6,12 +6,12 @@
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:09:28 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/15 16:01:55 by arojas-a         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:25:18 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 	while(s[i] != '\0')
@@ -19,7 +19,7 @@ size_t	ft_strlen(const char *s)
 	return(i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	unsigned int	i;
 	char			ch;
@@ -36,37 +36,64 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *line, char *temp)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
 	size_t 	len;
-	char	*join;
+	char	*dest;
 
-	len = ft_strlen(line) + ft_strlen(temp);
-	join = (char *)malloc(sizeof(char) * (len + 1));
-	if (!join)
+	len = ft_strlen(s1) + ft_strlen(s2);
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dest)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (line[i])
+	while (s1[i])
 	{
-		join[i] = line[i];
+		dest[i] = s1[i];
 		i++;
 	}
-	while (temp[j])
+	while (s2[j])
 	{
-		join[i] = temp[j];
+		dest[i] = s2[j];
 		i++;
 		j++;
 	}
-	join[i] = '\0';
-	return (join);
+	dest[i] = '\0';
+	return (dest);
 }
+
+char *ft_substr(char *str, unsigned int start, size_t len)
+{
+	size_t	i;
+	size_t	slen;
+	char	*dest;
+
+	if (!str)
+		return (NULL);
+	slen = ft_strlen(str);
+	if (slen > start)
+		len = 0;
+	if(len > slen - start)
+		len = slen - start;
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (dest == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len && str[i + start])
+	{
+		dest[i] = str[i + start];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
 /*#include <stdio.h>
 int main (void)
 {
-	char line[] = "hola ";
-	char temp[] = "que tal.";
-	printf("%s\n", ft_strjoin(line, temp));
+	char s1[] = "hola ";
+	char s2[] = "que tal.";
+	printf("%s\n", ft_strjoin(s1, s2));
 }*/

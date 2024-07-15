@@ -6,7 +6,7 @@
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 10:01:41 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/15 16:01:42 by arojas-a         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:04:14 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -47,6 +47,30 @@ char	*create_line(char *line, int fd)
 	if (char_read == -1)
 		return (free_line(&line));
 	return (line);
+}
+
+char	*get_line(char **line)
+{
+	char	*new_line;
+	size_t	line_len;
+
+	new_line = NULL;
+	if (ft_strlen(*line) == 0)
+		return (free_line(line));
+	if (ft_strchr(*line, '\n'))
+	{
+		line_len = ft_strlen(line) - ft_strlen(ft_strchr(*line, '\n')) + 1;
+		line = ft_substr(*line, 0, line_len);
+		if (!line)
+			return (free_line(line));
+		*line = clean(*line, line_len);
+	}
+	else
+	{
+		new_line = *line;
+		*line = NULL;
+	}
+	return (new_line);
 }
 
 char	*get_next_line(int fd)
