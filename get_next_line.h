@@ -6,7 +6,7 @@
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 11:43:17 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/12 11:52:30 by arojas-a         ###   ########.fr       */
+/*   Updated: 2024/07/15 16:01:52 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@
 # endif
 
 char	*get_next_line(int fd);
-int		ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
+char	*create_line(char *line, int fd);
+char	*free_line(char **line);
+//utils
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif

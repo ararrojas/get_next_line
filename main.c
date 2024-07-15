@@ -6,7 +6,7 @@
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 10:07:01 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/12 12:22:08 by arojas-a         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:09:07 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <fcntl.h>
@@ -30,9 +30,9 @@ int	main(int ac, char **av)
 			line = get_next_line(fd);
 			while(line)
 			{
-				printf("-----------------\n");
 				printf("%s \n", line);
 				free(line);
+				printf("------------\n");
 				line = get_next_line(fd);
 			}
 			close(fd);
