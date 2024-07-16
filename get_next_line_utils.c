@@ -14,7 +14,9 @@
 size_t	ft_strlen(char *s)
 {
 	size_t	i;
-	while(s[i] != '\0')
+
+	i = 0;
+	while (s[i] != '\0')
 		i++;
 	return(i);
 }
@@ -24,7 +26,8 @@ char	*ft_strchr(char *s, int c)
 	unsigned int	i;
 	char			ch;
 
-	c = ch;
+	ch = c;
+	i = 0;
 	while (s[i])
 	{
 		if (s[i] == ch)
@@ -89,11 +92,3 @@ char *ft_substr(char *str, unsigned int start, size_t len)
 	dest[i] = '\0';
 	return (dest);
 }
-
-/*#include <stdio.h>
-int main (void)
-{
-	char s1[] = "hola ";
-	char s2[] = "que tal.";
-	printf("%s\n", ft_strjoin(s1, s2));
-}*/

@@ -11,12 +11,49 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-char *free_line(char **line)
+char	*free_line(char **line)
 {
 	if (*line)
 		free(*line);
 	*line = NULL;
 	return (NULL);
+}
+
+char	*clean(char *line, size_t line_len)
+{
+	char	*new_line;
+
+	if (!line[line_len])
+		return (free_line(&line));
+	new_line = ft_substr(line, line_len, ft_strlen(line) - line_len);
+	free_line(&line);
+	if (!new_line)
+		return (NULL);
+	return (new_line);
+}
+
+char	*read_line(char **line)
+{
+	char	*buf_line;
+	size_t	line_len;
+
+	buf_line = NULL;
+	if (ft_strlen(*line) == 0)
+		return (free_line(line));
+	if (ft_strchr(*line, '\n'))
+	{
+		line_len = ft_strlen(*line) - ft_strlen(ft_strchr(*line, '\n')) + 1;
+		*line = ft_substr(*line, 0, line_len);
+		if (!line)
+			return (free_line(line));
+		*line = clean(*line, line_len);
+	}
+	else
+	{
+		buf_line = *line;
+		*line = NULL;
+	}
+	return (buf_line);
 }
 
 char	*create_line(char *line, int fd)
@@ -49,30 +86,6 @@ char	*create_line(char *line, int fd)
 	return (line);
 }
 
-char	*get_line(char **line)
-{
-	char	*new_line;
-	size_t	line_len;
-
-	new_line = NULL;
-	if (ft_strlen(*line) == 0)
-		return (free_line(line));
-	if (ft_strchr(*line, '\n'))
-	{
-		line_len = ft_strlen(line) - ft_strlen(ft_strchr(*line, '\n')) + 1;
-		line = ft_substr(*line, 0, line_len);
-		if (!line)
-			return (free_line(line));
-		*line = clean(*line, line_len);
-	}
-	else
-	{
-		new_line = *line;
-		*line = NULL;
-	}
-	return (new_line);
-}
-
 char	*get_next_line(int fd)
 {
 	static char	*line = NULL;
@@ -89,5 +102,5 @@ char	*get_next_line(int fd)
 	line = create_line(line, fd);
 	if (!line)
 		return (NULL);
-	return (line);
+	return (read_line(&line));
 }

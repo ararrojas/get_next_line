@@ -17,12 +17,14 @@
 # include <stdlib.h>
 
 #ifndef BUFF_SIZE
-# define BUFF_SIZE 1000
+# define BUFF_SIZE 1
 # endif
 
-char	*get_next_line(int fd);
-char	*create_line(char *line, int fd);
 char	*free_line(char **line);
+char	*clean(char *line, size_t line_len);
+char	*read_line(char **line);
+char	*create_line(char *line, int fd);
+char	*get_next_line(int fd);
 //utils
 size_t	ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
