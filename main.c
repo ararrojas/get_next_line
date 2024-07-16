@@ -36,7 +36,9 @@ int	main(int ac, char **av)
 			printf("[line number %d]:\n%s \n", count, line);
 			printf("------------\n");
 			line = NULL;
+			line = get_next_line(fd);
 		}
+		free(line);
 		close(fd);
 	}
 	return (0);

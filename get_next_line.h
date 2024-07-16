@@ -20,15 +20,16 @@
 # define BUFF_SIZE 1
 # endif
 
-char	*free_line(char **line);
-char	*clean(char *line, size_t line_len);
-char	*read_line(char **line);
-char	*create_line(char *line, int fd);
+void	*free_line(char **buffer);
+char	*get_next(char *buffer);
+char	*get_line(char *buffer);
+char	*read_line(char *file, int fd);
 char	*get_next_line(int fd);
+char	*free_buffer(char *file, char *buffer);
 //utils
 size_t	ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_substr(char *str, unsigned int start, size_t len);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

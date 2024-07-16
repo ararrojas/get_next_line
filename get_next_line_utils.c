@@ -67,7 +67,21 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (dest);
 }
 
-char *ft_substr(char *str, unsigned int start, size_t len)
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	char	*dest;
+	size_t	i;
+	
+	i = 0;
+	dest = (char *)malloc(nmemb * size);
+	if (dest == NULL)
+		return (NULL);
+	while (i < size)
+		dest[i++] = 0;
+	return (dest);
+}
+
+/*char *ft_substr(char *str, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	slen;
@@ -91,4 +105,4 @@ char *ft_substr(char *str, unsigned int start, size_t len)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
+}*/
