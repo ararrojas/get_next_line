@@ -6,7 +6,7 @@
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 10:07:01 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/17 13:14:23 by arojas-a         ###   ########.fr       */
+/*   Updated: 2024/07/17 14:35:16 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <fcntl.h>
@@ -28,15 +28,14 @@ int	main(int ac, char **av)
 		if (fd == -1)
 			write(1, "Cannot read file.\n", 18);
 		line = get_next_line(fd);
-		while (line)
+		while (line != NULL)
 		{
 			count++;
-			printf("[line number %d]:\n%s \n", count, line);
-	//		printf("------------\n");
+			printf("LINE [%d] =\n%s\n", count, line);
+			printf("------------\n");
 			free(line);
 			line = get_next_line(fd);
 		}
-		free(line);
 		close(fd);
 	}
 	return (0);
