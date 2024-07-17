@@ -6,7 +6,7 @@
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:09:28 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/17 12:40:19 by arojas-a         ###   ########.fr       */
+/*   Updated: 2024/07/17 14:41:35 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -48,7 +48,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	len = ft_strlen(s1) + ft_strlen(s2);
 	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dest)
+	if (dest == NULL)
 		return (NULL);
 	i = 0;
 	j = 0;

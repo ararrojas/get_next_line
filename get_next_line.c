@@ -6,7 +6,7 @@
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 10:01:41 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/17 14:28:10 by arojas-a         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:08:58 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -16,6 +16,8 @@ char	*join_and_free(char *file, char *buffer)
 	char	*temp;
 
 	temp = ft_strjoin(file, buffer);
+	if (temp == NULL)
+		return (NULL);
 	free(file);
 	return (temp);
 }
@@ -109,7 +111,7 @@ char	*get_next_line(int fd)
 	line = get_line(buffer);
 	if (!line)
 	{
-		free(line);
+		free(buffer);
 		line = NULL;
 		return (NULL);
 	}
