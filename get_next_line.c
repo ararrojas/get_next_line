@@ -80,12 +80,12 @@ char	*read_line(char *file, int fd)
 	if (!file)
 		file = ft_calloc(1, 1);
 	char_read = 1;
-	buffer = ft_calloc(sizeof(char), (BUFF_SIZE + 1));
+	buffer = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	while (!ft_strchr(file, '\n') && char_read > 0)
 	{
-		char_read = read(fd, buffer, BUFF_SIZE);
+		char_read = read(fd, buffer, BUFFER_SIZE);
 		if (char_read == -1)
 		{
 			free(buffer);
@@ -103,7 +103,7 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
-	if (fd < 0 || BUFF_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = read_line(buffer, fd);
 	if (!buffer)
