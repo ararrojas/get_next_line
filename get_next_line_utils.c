@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-unsigned long int	ft_strlen(char *s)
+size_t	ft_strlen(char *s)
 {
-	unsigned long int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -23,8 +23,8 @@ unsigned long int	ft_strlen(char *s)
 
 char	*ft_strchr(char *s, int c)
 {
-	unsigned int	i;
-	char			ch;
+	size_t	i;
+	char	ch;
 
 	ch = c;
 	i = 0;
@@ -41,9 +41,9 @@ char	*ft_strchr(char *s, int c)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	unsigned long int	i;
-	unsigned long int	j;
-	char				*dest;
+	size_t	i;
+	size_t	j;
+	char	*dest;
 
 	if (!s1)
 	{
