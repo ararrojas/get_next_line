@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+unsigned long int	ft_strlen(char *s)
 {
-	size_t	i;
+	unsigned long int	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -28,55 +28,42 @@ char	*ft_strchr(char *s, int c)
 
 	ch = c;
 	i = 0;
-	while (s[i])
+	if (ch == '\0')
+		return ((char *)s + ft_strlen(s));
+	while (s[i] != '\0')
 	{
 		if (s[i] == ch)
 			return ((char *)s + i);
 		i++;
 	}
-	if (ch == '\0')
-		return ((char *)s + i);
 	return (NULL);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	i;
-	size_t	j;
-	size_t	len;
-	char	*dest;
+	unsigned long int	i;
+	unsigned long int	j;
+	char				*dest;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s1)
+	{
+		s1 = (char *)malloc(sizeof(char) * 1);
+		s1[0] = '\0';
+	}
+	if (!s1 || !s2)
+		return (NULL);
+	dest = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (dest == NULL)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (s1[i])
+	while (s1[i] != '\0')
 	{
 		dest[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
-	{
-		dest[i] = s2[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char	*dest;
-	size_t	i;
-
-	i = 0;
-	dest = (char *)malloc(nmemb * size);
-	if (dest == NULL)
-		return (NULL);
-	while (i < size)
-		dest[i++] = 0;
+	while (s2[j] != '\0')
+		dest[i++] = s2[j++];
+	dest[ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	return (dest);
 }

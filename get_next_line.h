@@ -16,14 +16,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 10
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
 # endif
 
-char	*join_and_free(char *file, char *buffer);
-char	*get_next(char *buffer);
-char	*get_line(char *buffer);
-char	*read_line(char *file, int fd);
+char	*join_and_free(char *static_buf, char *buffer);
+char	*get_next(char *static_buf);
+char	*get_line(char *static_buf);
+char	*read_line(int fd, char *static_buf);
 char	*get_next_line(int fd);
 //utils
 size_t	ft_strlen(char *s);
