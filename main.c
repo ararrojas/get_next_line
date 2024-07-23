@@ -6,7 +6,7 @@
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 10:07:01 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/17 14:44:06 by arojas-a         ###   ########.fr       */
+/*   Updated: 2024/07/23 13:16:36 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <fcntl.h>
@@ -14,7 +14,7 @@
 #include "get_next_line.h"
 #include "get_next_line_bonus.h"
 
-/*
+
 // sin bonus
 int	main(int ac, char **av)
 {
@@ -47,9 +47,9 @@ int	main(int ac, char **av)
 		close(fd);
 	}
 	return (0);
-}*/
-
-// bonus
+}
+/*
+// bonus - leaks in this main for bonus
 
 int	main(int ac, char **av)
 {
@@ -73,29 +73,30 @@ int	main(int ac, char **av)
 	while (fd && fd2 && fd3)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		printf("line [%d]: %s", count, line);
-		printf("------------\n");
-		free(line);
 		line = get_next_line(fd2);
-		if (line == NULL)
-			break ;
-		printf("line [%d]: %s", count, line);
-		printf("------------\n");
-		free(line);
 		line = get_next_line(fd3);
-		if (line == NULL)
+		if (line)
+		{
+			free(line);
+			printf("line [%d]: %s", count, line);
+			printf("------------\n");
+			if (line == NULL)
 			break ;
-		printf("line [%d]: %s", count, line);
-		printf("------------\n");
-		free(line);
-		count++;
-		line = NULL;
+			
+			printf("line [%d]: %s", count, line);
+			printf("------------\n");
+			if (line == NULL)
+			break ;
+			
+			printf("line [%d]: %s", count, line);
+			printf("------------\n");
+			count++;
+			line = NULL;
+		}
 	}
 	count = 1;
 	close(fd);
 	close(fd2);
 	close(fd3);
 	return (0);
-}
+}*/

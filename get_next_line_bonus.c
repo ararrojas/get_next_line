@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/22 17:10:52 by arojas-a          #+#    #+#             */
+/*   Updated: 2024/07/22 17:10:56 by arojas-a         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "get_next_line_bonus.h"
 
 char	*join_and_free(char *static_buf, char *buffer)
@@ -7,7 +18,6 @@ char	*join_and_free(char *static_buf, char *buffer)
 	temp = ft_strjoin(static_buf, buffer);
 	if (temp == NULL)
 		return (NULL);
-	free(static_buf);
 	return (temp);
 }
 

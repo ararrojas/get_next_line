@@ -6,7 +6,7 @@
 /*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 10:01:41 by arojas-a          #+#    #+#             */
-/*   Updated: 2024/07/17 16:08:58 by arojas-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:04:40 by arojas-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -18,7 +18,6 @@ char	*join_and_free(char *static_buf, char *buffer)
 	temp = ft_strjoin(static_buf, buffer);
 	if (temp == NULL)
 		return (NULL);
-	free(static_buf);
 	return (temp);
 }
 

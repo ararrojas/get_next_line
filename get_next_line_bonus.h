@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arojas-a <arojas-a@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/22 17:10:37 by arojas-a          #+#    #+#             */
+/*   Updated: 2024/07/22 17:11:26 by arojas-a         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
@@ -24,4 +35,3 @@ char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 
 #endif
-
